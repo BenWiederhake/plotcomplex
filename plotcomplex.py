@@ -19,6 +19,7 @@ def as_col(c):
 def f(c, B, C):
 #    return c  # id
 #    return exp(c.real + c.imag * 3j)  # complex exponentiation, with scaled imaginary part
+#    return c * (B + C * 1j)  # complex multiplication
     return c * c + B * c + C  # General quadratic
 
 

@@ -58,6 +58,10 @@ Here's another example for complex exponentiation:
 
 ![graphical representation of exp_C](cexp.png)
 
+And one for multiplication:
+
+![animated graphical representation of mult_C](cmult.png)
+
 ## TODOs
 
 - Implement in a faster way.  Rust?
