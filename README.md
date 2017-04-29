@@ -4,6 +4,7 @@
 
 I wanted to know how quadratic functions behave and look like,
 in general, for complex-valued arguments.
+Short answer: [like this](quadratic.mkv?raw=true)!
 
 I was getting fed up with Wolfram Alpha not plotting it like I want,
 and lacking any kind of interactivity.
