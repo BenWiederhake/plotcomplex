@@ -4,9 +4,7 @@
 
 I wanted to know how quadratic functions behave and look like,
 in general, for complex-valued arguments.
-Short answer:
-
-![animated graphical representation of general parabolae](quadratic.mp4)
+Short answer: [open animation](quadratic.mp4?raw=true)
 
 I was getting fed up with Wolfram Alpha not plotting it like I want,
 and lacking any kind of interactivity.
@@ -60,9 +58,7 @@ Here's another example for complex exponentiation:
 
 ![graphical representation of exp_C](cexp.png)
 
-And one for multiplication:
-
-![animated graphical representation of mult_C](cmult.mp4)
+And one for multiplication: [open animation](cmult.mp4?raw=true)
 
 ## TODOs
 
