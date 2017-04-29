@@ -11,3 +11,7 @@ THIS_FRAME=$(patsubst img_%.png,%,$@)
 
 ${ALL_PNG}: img_%.png:
 	./plotcomplex.py ${THIS_FRAME} ${FRAME_COUNT}
+
+.PHONY: clean
+clean:
+	rm -f img_????.png animation.mkv
