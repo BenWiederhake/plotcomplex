@@ -49,6 +49,15 @@ Here's how you can visualize your own function:
 
 Note that the python script is very slow, and `make` is used to execute it in parallel.
 
+The white lines indicate the parameters.
+The vertical line indicates `a`, which is used as the linear coefficient,
+and the horizontal line indicates `b`, used as the constant coefficient.
+Note that `a` and `b` are real-valued, so the intersection point does not indicate anything meaningful.
+
+Here's another example for complex exponentiation:
+
+![graphical representation of exp_C](cexp.png)
+
 ## TODOs
 
 - Implement in a faster way.  Rust?

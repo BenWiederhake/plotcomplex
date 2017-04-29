@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from cmath import polar, pi
+from cmath import polar, pi, exp
 from colorsys import hsv_to_rgb
 from math import sin, cos
 from PIL import Image, ImageDraw
@@ -17,7 +17,9 @@ def as_col(c):
 
 
 def f(c, B, C):
-    return c * c + B * c + C
+#    return c  # id
+#    return exp(c.real + c.imag * 3j)  # complex exponentiation, with scaled imaginary part
+    return c * c + B * c + C  # General quadratic
 
 
 def plot_into(img, a, b):
