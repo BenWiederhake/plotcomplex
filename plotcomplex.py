@@ -3,7 +3,7 @@
 from cmath import polar, pi
 from colorsys import hsv_to_rgb
 from math import sin, cos
-from PIL import Image
+from PIL import Image, ImageDraw
 
 
 def as_col(c):
@@ -27,6 +27,12 @@ def plot_into(img, a, b):
             i = (y + OFFSET_Y) * SCALE
             c = f(r + i * 1j, a, b)
             img.putpixel((x, y), as_col(c))
+    draw = ImageDraw.Draw(img)
+    draw_x = a / SCALE - OFFSET_X
+    draw_y = b / SCALE - OFFSET_Y
+    draw.line((draw_x, 0, draw_x, H), fill=(255, 255, 255))
+    draw.line((0, draw_y, W, draw_y), fill=(255, 255, 255))
+    del draw
 
 def gen_param(t):
     r = (1 - cos(t * 2 * pi)) * 0.6
@@ -41,19 +47,40 @@ H = 480
 SCALE = 1 / 150
 OFFSET_X = -W / 2
 OFFSET_Y = -H / 2
-T_MAX = 50
-PARAMS = list([gen_param(t / T_MAX) for t in range(T_MAX)])
 
 
-def plot_all():
+def gen_filename(n, total):
+    return "img_{:05d}.png".format(n)
+
+
+def plot_single(n, total):
+    assert 0 <= n and n < total, (n, total)
+    (a, b) = gen_param(n / total)
     img = Image.new("RGB", (W, H))
-    for (n, (a, b)) in enumerate(PARAMS):
-        plot_into(img, a, b)
-        #img.show()
-        filename = "myimg_{:02d}_{:+5.3f}_{:+5.3f}.png".format(n, a, b)
-        print("Done with " + filename)
-        img.save(filename)
+    plot_into(img, a, b)
+    filename = gen_filename(n, total)
+    print("Done with " + filename)
+    img.save(filename)
 
+
+USAGE = """"Usage: {name} {--enumerate | <I> } <N>
+<I> is the frame number.
+<N> is the total amount of frames.
+Examples:
+$ {name} 29 30
+Plots the last frame into file img_30.
+$ {name} 0 30
+Plots the first frame into file img_01."""
 
 if __name__ == '__main__':
-    plot_all()
+    from sys import argv
+    if len(argv) == 3:
+        total = int(argv[2])
+        if argv[1] == "--enumerate":
+            for n in range(total):
+                print(gen_filename(n, total))
+        else:
+            plot_single(int(argv[1]), total)
+    else:
+        print(USAGE.format(name=argv[0]))
+        exit(1)
